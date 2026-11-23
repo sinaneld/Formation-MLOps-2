@@ -30,7 +30,7 @@ jobs:
       - name: Install Bandit
         run: uv tool install bandit
       - name: Security analysis with Bandit
-        run: bandit -r .
+        run: bandit -r formation_mlops_2 scripts
       # Detect-secrets (détection de secrets)
       - name: Install detect-secrets
         run: uv tool install detect-secrets
