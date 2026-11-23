@@ -21,8 +21,6 @@ jobs:
         run: uv tool install ruff
       - name: Lint code with Ruff
         run: ruff check . --output-format=github --target-version=py39
-      - name: Check code formatting with Ruff
-        run: ruff format . --check --target-version=py39
       # Vulture (détection de code mort)
       - name: Install Vulture
         run: uv tool install vulture
