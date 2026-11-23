@@ -25,7 +25,7 @@ jobs:
       - name: Install Vulture
         run: uv tool install vulture
       - name: Detect dead code
-        run: vulture . --min-confidence 80
+        run: vulture formation_mlops_2 scripts --min-confidence 80
       # Bandit (analyse de sécurité)
       - name: Install Bandit
         run: uv tool install bandit
