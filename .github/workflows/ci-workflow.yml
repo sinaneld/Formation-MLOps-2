@@ -17,8 +17,14 @@ jobs:
         run: uv python install
       - name: Install dependencies
         run: uv sync --locked --all-groups
-      - name: Run Linter
-        run: echo "::error::À compléter - remplacez cette ligne par la commande qui lance ruff" && exit 1
-      - name: Run tests
-        run: echo "::error::À compléter - remplacez cette ligne par la commande qui lance les tests unitaires" && exit 1
-
+      # Installation de ruff comme outil, en dehors des dépendances du projet
+      - name: Install the code linting and formatting tool Ruff
+        run: uv tool install ruff
+      - name: Lint code with Ruff
+        run: ruff check --output-format=github --target-version=py39
+      - name: Check code formatting with Ruff
+        run: ruff format --diff --target-version=py39
+        continue-on-error: true
+      # uv run lance une commande dans l'environnement virtuel du projet
+      - name: Test with pytest
+        run: uv run pytest
